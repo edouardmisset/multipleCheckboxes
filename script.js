@@ -9,17 +9,17 @@ for (let index = 0; index < checkboxes.length; index++) {
   checkbox.addEventListener("click", (e) => {
     e.shiftKey ? (secondCheckbox = index) : (firstCheckbox = index);
 
-    let startingIndex, secondIndex;
+    let startingIndex, endingIndex;
 
     if (firstCheckbox < secondCheckbox) {
       startingIndex = firstCheckbox;
-      secondIndex = secondCheckbox;
+      endingIndex = secondCheckbox;
     } else {
       startingIndex = secondCheckbox;
-      secondIndex = firstCheckbox;
+      endingIndex = firstCheckbox;
     }
 
-    for (let i = startingIndex; i < secondIndex; i++) {
+    for (let i = startingIndex; i < endingIndex; i++) {
       checkboxes[i].checked = true;
     }
   });
