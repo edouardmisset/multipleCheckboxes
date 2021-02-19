@@ -7,19 +7,18 @@ let secondCheckbox;
 for (let index = 0; index < checkboxes.length; index++) {
   const checkbox = checkboxes[index];
   checkbox.addEventListener("click", (e) => {
-    e.shiftKey ? (secondCheckbox = index) : (firstCheckbox = index);
+    // loop over every checkbox to add eventlistener
 
-    let startingIndex, endingIndex;
-
-    if (firstCheckbox < secondCheckbox) {
-      startingIndex = firstCheckbox;
-      endingIndex = secondCheckbox;
+    if (e.shiftKey && index > firstCheckbox) {
+      secondCheckbox = index;
+    } else if (e.shiftKey && index < firstCheckbox) {
+      secondCheckbox = firstCheckbox;
+      firstCheckbox = index;
     } else {
-      startingIndex = secondCheckbox;
-      endingIndex = firstCheckbox;
+      firstCheckbox = index;
     }
 
-    for (let i = startingIndex; i < endingIndex; i++) {
+    for (let i = firstCheckbox; i < secondCheckbox; i++) {
       checkboxes[i].checked = true;
     }
   });
