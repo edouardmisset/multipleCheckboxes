@@ -3,23 +3,23 @@ const checkboxes = document.querySelectorAll("input");
 let firstCheckbox;
 let secondCheckbox;
 
-// Event listeners
+// Event listeners & logic
 for (let index = 0; index < checkboxes.length; index++) {
   const checkbox = checkboxes[index];
   checkbox.addEventListener("click", (e) => {
     e.shiftKey ? (secondCheckbox = index) : (firstCheckbox = index);
 
-    let firstIndex, secondIndex;
+    let startingIndex, secondIndex;
 
     if (firstCheckbox < secondCheckbox) {
-      firstIndex = firstCheckbox;
+      startingIndex = firstCheckbox;
       secondIndex = secondCheckbox;
     } else {
-      firstIndex = secondCheckbox;
+      startingIndex = secondCheckbox;
       secondIndex = firstCheckbox;
     }
 
-    for (let i = firstIndex; i < secondIndex; i++) {
+    for (let i = startingIndex; i < secondIndex; i++) {
       checkboxes[i].checked = true;
     }
   });
